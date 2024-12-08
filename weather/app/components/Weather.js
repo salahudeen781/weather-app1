@@ -42,7 +42,7 @@ function Weather({ currentWeather }) {
     }
   };
   return (
-    <div className="bg-gray-900 p-8 rounded-lg mb-3">
+    <div className="bg-gray-900 p-8 rounded-lg mb-3 text-white">
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold mb-2">{currentWeather.name}</h2>
@@ -65,8 +65,8 @@ function Weather({ currentWeather }) {
           </p>
         </div>
         <div>
-          <p className="text-sm">High: {currentWeather.main.temp}°C</p>
-          <p className="text-sm">High: {currentWeather.main.temp}°C</p>
+          <p className="text-sm">High: {currentWeather.main.temp_max}°C</p>
+          <p className="text-sm">Low: {currentWeather.main.temp_min}°C</p>
         </div>
       </div>
     </div>

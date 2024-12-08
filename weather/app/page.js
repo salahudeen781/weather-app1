@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Weather from "./components/Weather";
+import SunriseSunset from "./components/SunriseSunset";
+import WindSpeed from "./components/WindSpeed";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -78,21 +80,26 @@ export default function Home() {
           >
             Search
           </button>
-
-          {/* Show error alert if applicable */}
-          {errorAlert && <div className="text-red-500 mb-4">{errorAlert}</div>}
-
-          {/* Additional weather information */}
-          {currentWeather &&
-            forecastData &&
-            hourlyTemperatureData.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="md:col-span-2">
-                  <Weather currentWeather={currentWeather} />
-                </div>
-              </div>
-            )}
         </div>
+
+        {/* Show error alert if applicable */}
+        {errorAlert && <div className="text-red-500 mb-4">{errorAlert}</div>}
+
+        {/* Additional weather information */}
+        {currentWeather && forecastData && hourlyTemperatureData.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pl-4 pr-2">
+            <div className="md:col-span-2">
+              <Weather currentWeather={currentWeather} />
+            </div>
+            <div className="md:col-span1 text-white">
+              <SunriseSunset
+                sunrise={currentWeather.sys.sunrise}
+                sunset={currentWeather.sys.sunset}
+              />
+              <WindSpeed windSpeed={currentWeather.wind.speed} />
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
