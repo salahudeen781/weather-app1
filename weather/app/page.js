@@ -4,6 +4,7 @@ import { useState } from "react";
 import Weather from "./components/Weather";
 import SunriseSunset from "./components/SunriseSunset";
 import WindSpeed from "./components/WindSpeed";
+import HourlyWeather from "./components/HourlyWeather";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -97,6 +98,9 @@ export default function Home() {
                 sunset={currentWeather.sys.sunset}
               />
               <WindSpeed windSpeed={currentWeather.wind.speed} />
+            </div>
+            <div className="md:col-span2  text-white">
+              <HourlyWeather hourlyTemperatureData={hourlyTemperatureData} />
             </div>
           </div>
         )}
