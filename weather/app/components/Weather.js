@@ -10,7 +10,7 @@ import {
 
 function Weather({ currentWeather }) {
   const formatDateTime = (timestamp) => {
-    return moment.unix(timestamp).format("MMMM D, ddd HH:mm");
+    return moment.unix(timestamp).local().format("MMMM D,YYYY, ddd HH:mm");
   };
 
   //function to determine the weather icon based on the waether description
@@ -47,7 +47,7 @@ function Weather({ currentWeather }) {
         <div>
           <h2 className="text-2xl font-bold mb-2">{currentWeather.name}</h2>
           <p className="text-lg mb-2">
-            {moment.unix(currentWeather.dt).format("dddd")}
+            {moment.unix(currentWeather.dt).local().format("dddd")}
           </p>
         </div>
         <p className="text-lg mb-2">{formatDateTime(currentWeather.dt)}</p>

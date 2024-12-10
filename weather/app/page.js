@@ -5,6 +5,10 @@ import Weather from "./components/Weather";
 import SunriseSunset from "./components/SunriseSunset";
 import WindSpeed from "./components/WindSpeed";
 import HourlyWeather from "./components/HourlyWeather";
+import FeelsLike from "./components/FeelsLike";
+import HumidityInfo from "./components/Humidity";
+import VisibilityInfo from "./components/Visibility";
+import FiveDaysGraph from "./components/FiveDays";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -101,6 +105,17 @@ export default function Home() {
             </div>
             <div className="md:col-span2  text-white">
               <HourlyWeather hourlyTemperatureData={hourlyTemperatureData} />
+            </div>
+            <div className="md:col-span2  text-white">
+              <FeelsLike
+                actualTemperature={currentWeather.main.temp}
+                feelsLikeTemperature={currentWeather.main.feels_like}
+              />
+              <HumidityInfo humidity={currentWeather.main.humidity} />
+              <VisibilityInfo visibility={currentWeather.visibility} />
+            </div>
+            <div className="md:col-span2  text-white">
+              <FiveDaysGraph forecastData={forecastData} />
             </div>
           </div>
         )}
